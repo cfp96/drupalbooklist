@@ -1,0 +1,35 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"phpcs.enable": true,
+		"phpcs.standard": "Drupal,DrupalPractice",
+		"breadcrumbs.enabled": true,
+		"css.validate": true,
+		"diffEditor.ignoreTrimWhitespace": false,
+		"editor.tabSize": 2,
+		"editor.autoIndent": "full",
+		"editor.insertSpaces": true,
+		"editor.formatOnPaste": true,
+		"editor.formatOnSave": false,
+		"editor.renderWhitespace": "boundary",
+		"editor.wordWrapColumn": 80,
+		"editor.wordWrap": "off",
+		"editor.detectIndentation": true,
+		"editor.rulers": [
+		  80
+		],
+		"files.trimTrailingWhitespace": true,
+		"files.insertFinalNewline": true,
+		"html.format.enable": true,
+		"html.format.wrapLineLength": 80,
+		"telemetry.enableTelemetry": false,
+		/* Empty Indent */
+		"emptyIndent.removeIndent": true,
+		"emptyIndent.highlightIndent": false,
+		"emptyIndent.highlightColor": "rgba(246,36,89,0.6)",
+	}
+}

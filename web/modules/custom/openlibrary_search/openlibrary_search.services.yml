@@ -1,0 +1,10 @@
+services:
+  openlibrary_search.search_service:
+    class: Drupal\openlibrary_search\Service\OpenLibraryService
+    arguments: ['@http_client_factory', '@entity_type.manager', '@entity_field.manager' , '@messenger']
+  # Commands
+  openlibrary_search.commands:
+    class: Drupal\openlibrary_search\Command\OpenLibraryCommand
+    arguments: ['@openlibrary_search.search_service']
+    tags:
+      - { name: drush.command }

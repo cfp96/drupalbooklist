@@ -1,0 +1,19 @@
+uuid: e241b87d-0816-4d9f-a653-123e3e687475
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_first_publish_year
+    - node.type.book
+id: node.book.field_first_publish_year
+field_name: field_first_publish_year
+entity_type: node
+bundle: book
+label: 'first publish year'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

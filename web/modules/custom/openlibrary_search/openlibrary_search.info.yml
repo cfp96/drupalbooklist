@@ -1,0 +1,5 @@
+name: 'Open Library Book search'
+type: module
+description: 'Integrates Open Library API for book search.'
+package: Custom
+core_version_requirement: ^9 || ^10

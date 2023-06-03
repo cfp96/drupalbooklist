@@ -1,0 +1,14 @@
+uuid: 42b28e0f-f5de-4879-8824-d70af87cdbca
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: vymHlgJy26BuI5GGj9-IXjwR3dRC5C0tij4BpWJnoqw
+id: feedback
+label: 'Website feedback'
+recipients:
+  - carfelcoper@gmail.com
+reply: ''
+weight: 0
+message: 'Your message has been sent.'
+redirect: ''

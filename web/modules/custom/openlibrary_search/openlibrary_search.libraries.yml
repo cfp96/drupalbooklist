@@ -1,0 +1,9 @@
+bootstrap:
+  version: 4.3.1
+  css:
+    theme:
+      https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css: { type: external, minified: true }
+  js:
+    https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js: { type: external, minified: true }
+  dependencies:
+    - core/jquery

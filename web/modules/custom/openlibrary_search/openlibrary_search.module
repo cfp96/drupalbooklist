@@ -1,0 +1,56 @@
+<?php
+
+/**
+ * @file
+ * Implements hook_help().
+ */
+
+/**
+ * Implements hook_help().
+ */
+function openlibrary_search_help($route_name, $route_parameters) {
+  switch ($route_name) {
+    case 'help.page.openlibrary_search':
+      return '<p>' . t('Provides integration with the Open Library API for book search.') . '</p>';
+  }
+}
+
+/**
+ * Implements hook_views_pre_view().
+ */
+function openlibrary_search_views_pre_view($view, $display_id, &$args) {
+  // This line is for optimization and actulization when a search was made.
+  \Drupal::service('page_cache_kill_switch')->trigger();
+  // Verification of the id of the view and the display id in this case is a page.
+  if ($view->id() === 'book_list' && $display_id === 'page_1') {
+    $author = \Drupal::request()->query->get('field_author_value');
+    $title = \Drupal::request()->query->get('title');
+
+    // Instantiate the Open Library service.
+    $openLibrarySearchService = \Drupal::service('openlibrary_search.search_service');
+
+    // Fetch book data from the Open Library API service.
+    $books = $openLibrarySearchService->createBookInDrupal($title, $author);
+
+    // This condition is to show the infromation that already exist.
+    if ($books == FALSE) {
+      $query = \Drupal::entityQuery('node')
+        ->condition('type', 'book')
+        ->condition('title', '%' . $title . '%', 'LIKE');
+
+      // Get the taxonomy term ID for the author.
+      if (!empty($author)) {
+        $authorTermId = $openLibrarySearchService->getAuthorTermId($author);
+        if ($authorTermId) {
+          $query->condition('field_author_new', $authorTermId);
+        }
+      }
+
+      $existingBookIds = $query->execute();
+      $view->setExposedInput([
+        'field_book_ids' => $existingBookIds,
+      ]);
+    }
+
+  }
+}

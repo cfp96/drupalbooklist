@@ -1,0 +1,8 @@
+uuid: 183f8cf4-6a7b-473a-b1a3-3b85122781cb
+langcode: en
+status: true
+dependencies: {  }
+name: Authors
+vid: authors
+description: 'List of authors'
+weight: 0
