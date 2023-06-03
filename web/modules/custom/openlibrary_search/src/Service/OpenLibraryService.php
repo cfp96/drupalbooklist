@@ -157,16 +157,11 @@ class OpenLibraryService {
           $maxTitleLength = 255;
           $truncatedTitle = mb_strimwidth($book['title'], 0, $maxTitleLength, '...');
 
-          //this is to store the author in a taxonomy term
-          $authorTermStorage = $this->entityTypeManager->getStorage('taxonomy_term');
-          $authorsVocabulary = $this->entityTypeManager->getStorage('taxonomy_vocabulary')->load('authors');
-
           $bookNode = \Drupal\node\Entity\Node::create([
             'type' => 'book',
             'title' => $truncatedTitle,
-            'field_author_new' => [
-              'target_id' => $this->getOrCreateAuthorTerm($book['author'], $authorTermStorage, $authorsVocabulary),
-            ],
+            'field_title_book' => $book['title'],
+            'field_author' => $book['author'],
             'field_first_publish_year' => $book['first_publish_year'],
             'body' => [
               'value' => $book['description'],
@@ -193,14 +188,12 @@ class OpenLibraryService {
    */
   public function checkIfBookAlreadyExist($title, $author) {
     $query = $this->entityTypeManager->getStorage('node')
-    ->getQuery()
-    ->condition('type', 'book')
-    ->condition('title', $title);
+      ->getQuery()
+      ->condition('type', 'book')
+      ->condition('title', $title);
 
-    // Get the taxonomy term ID for the author.
-    $authorTermId = $this->getAuthorTermId($author);
-    if ($authorTermId) {
-      $query->condition('field_author_new.target_id', $authorTermId);
+    if (!empty($author)) {
+      $query->condition('field_author', $author);
     }
 
     $result = $query->execute();

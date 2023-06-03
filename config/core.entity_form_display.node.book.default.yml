@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.book.field_author
     - field.field.node.book.field_author_new
     - field.field.node.book.field_first_publish_year
+    - field.field.node.book.field_title_book
     - node.type.book
   module:
     - path
@@ -53,6 +54,14 @@ content:
   field_first_publish_year:
     type: string_textfield
     weight: 125
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_title_book:
+    type: string_textfield
+    weight: 127
     region: content
     settings:
       size: 60

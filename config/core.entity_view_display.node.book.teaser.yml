@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.book.field_author
     - field.field.node.book.field_author_new
     - field.field.node.book.field_first_publish_year
+    - field.field.node.book.field_title_book
     - node.type.book
   module:
     - text
@@ -34,3 +35,4 @@ hidden:
   field_author: true
   field_author_new: true
   field_first_publish_year: true
+  field_title_book: true
